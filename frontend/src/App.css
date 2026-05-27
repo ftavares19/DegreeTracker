@@ -89,6 +89,37 @@
   margin-bottom: 1.5rem;
 }
 
+.view-tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem;
+  margin-bottom: 1.3rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+}
+
+.view-tab {
+  border: 0;
+  background: transparent;
+  color: var(--color-text-muted);
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.view-tab.active {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.view-tab:hover:not(.active) {
+  color: var(--color-primary);
+}
+
 .degree-chip {
   border-radius: 999px;
   border: 1px solid var(--color-border);
@@ -145,6 +176,13 @@
 
 .insights-panel {
   padding: 1.15rem;
+}
+
+.map-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.1rem;
 }
 
 .loading-container {
@@ -257,5 +295,16 @@ footer a:hover {
 
   .theme-toggle span {
     display: none;
+  }
+
+  .view-tabs {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .view-tab {
+    flex: 1;
+    text-align: center;
+    padding-inline: 0.65rem;
   }
 }

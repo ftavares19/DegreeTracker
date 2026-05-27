@@ -5,10 +5,12 @@ import DegreeOverview from './components/DegreeOverview';
 import StrategicSubjects from './components/StrategicSubjects';
 import SubjectList from './components/SubjectList';
 import SubjectDetailModal from './components/SubjectDetailModal';
+import CareerMap from './components/CareerMap';
 import './App.css';
 
 const DEGREE_ID = 1;
 type Theme = 'light' | 'dark';
+type ActiveView = 'subjects' | 'map';
 
 function App() {
   const [degree, setDegree] = useState<Degree | null>(null);
@@ -18,6 +20,7 @@ function App() {
   const [error, setError] = useState<string | null>(null);
   const [selectedSubjectId, setSelectedSubjectId] = useState<number | null>(null);
   const [theme, setTheme] = useState<Theme>('light');
+  const [activeView, setActiveView] = useState<ActiveView>('subjects');
 
   const fetchData = async (showLoading = true) => {
     try {
@@ -153,24 +156,47 @@ function App() {
           </button>
         </section>
 
-        <div className="content-layout">
-          <aside className="subjects-panel">
-            <div className="panel-header">
-              <h2>Materias</h2>
-              <p>{subjects.length} en total</p>
-            </div>
-            <SubjectList
-              subjects={subjects}
-              onUpdateStatus={handleUpdateStatus}
-              onShowDetails={handleShowDetails}
-            />
-          </aside>
+        <section className="view-tabs" aria-label="Vistas de carrera">
+          <button
+            type="button"
+            className={`view-tab ${activeView === 'subjects' ? 'active' : ''}`}
+            onClick={() => setActiveView('subjects')}
+          >
+            Lista de materias
+          </button>
+          <button
+            type="button"
+            className={`view-tab ${activeView === 'map' ? 'active' : ''}`}
+            onClick={() => setActiveView('map')}
+          >
+            Vista general
+          </button>
+        </section>
 
-          <section className="insights-panel">
-            <DegreeOverview degree={degree} />
-            <StrategicSubjects strategicSubjects={strategicSubjects} />
+        {activeView === 'subjects' ? (
+          <div className="content-layout">
+            <aside className="subjects-panel">
+              <div className="panel-header">
+                <h2>Materias</h2>
+                <p>{subjects.length} en total</p>
+              </div>
+              <SubjectList
+                subjects={subjects}
+                onUpdateStatus={handleUpdateStatus}
+                onShowDetails={handleShowDetails}
+              />
+            </aside>
+
+            <section className="insights-panel">
+              <DegreeOverview degree={degree} />
+              <StrategicSubjects strategicSubjects={strategicSubjects} />
+            </section>
+          </div>
+        ) : (
+          <section className="map-panel">
+            <CareerMap subjects={subjects} />
           </section>
-        </div>
+        )}
       </div>
 
       <footer>
