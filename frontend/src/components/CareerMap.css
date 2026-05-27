@@ -1,0 +1,198 @@
+.career-map {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.career-map-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.career-map-header h2 {
+  font-size: 1.2rem;
+}
+
+.career-map-header p {
+  margin-top: 0.2rem;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+}
+
+.career-map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.45rem;
+}
+
+.legend-item {
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  padding: 0.35rem 0.65rem;
+  font-size: 0.68rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--color-surface);
+}
+
+.legend-item-approved {
+  border-color: color-mix(in srgb, #2f8f5b 45%, var(--color-border));
+  color: #2f8f5b;
+}
+
+.legend-item-eligible {
+  border-color: color-mix(in srgb, #b68a10 38%, var(--color-border));
+  color: #a06b00;
+}
+
+.legend-item-blocked {
+  border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
+  color: var(--color-primary);
+}
+
+.career-map-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.semester-card {
+  min-height: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.semester-card-single {
+  border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-primary) 8%, transparent) inset;
+}
+
+.semester-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.7rem 0.8rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.semester-card-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.semester-card-count {
+  min-width: 1.2rem;
+  height: 1.2rem;
+  padding: 0 0.3rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.semester-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.75rem;
+}
+
+.roadmap-subject {
+  display: flex;
+  align-items: stretch;
+  gap: 0.65rem;
+  padding: 0.55rem 0.6rem;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--color-bg) 55%, var(--color-surface));
+  border: 1px solid var(--color-border);
+}
+
+.roadmap-subject-indicator {
+  width: 4px;
+  border-radius: 999px;
+  flex-shrink: 0;
+  background: var(--color-border);
+}
+
+.roadmap-subject.approved .roadmap-subject-indicator {
+  background: #2f8f5b;
+}
+
+.roadmap-subject.eligible .roadmap-subject-indicator {
+  background: #d2a516;
+}
+
+.roadmap-subject.blocked .roadmap-subject-indicator {
+  background: var(--color-primary);
+}
+
+.roadmap-subject-content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.roadmap-subject-name {
+  font-size: 0.8rem;
+  line-height: 1.25;
+  font-weight: 500;
+  color: var(--color-text-main);
+}
+
+.roadmap-subject-state {
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--color-text-muted);
+}
+
+.roadmap-subject.approved .roadmap-subject-state {
+  color: #2f8f5b;
+}
+
+.roadmap-subject.eligible .roadmap-subject-state {
+  color: #a06b00;
+}
+
+.roadmap-subject.blocked .roadmap-subject-state {
+  color: var(--color-primary);
+}
+
+@media (max-width: 900px) {
+  .career-map-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .career-map-legend {
+    justify-content: flex-start;
+  }
+
+  .career-map-grid {
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .career-map-grid {
+    grid-template-columns: 1fr;
+  }
+}
